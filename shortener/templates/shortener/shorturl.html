@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Shortened URL of {{ shortened_url.url }}
+{% endblock %}
+
+{% block content %}
+    <h3>The shortened url of {{ shortened_url.url }} is:</h3>
+    <br>
+    {{ shortened_url.get_shortened_url }}
+{% endblock %}
