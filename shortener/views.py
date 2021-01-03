@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic.edit import FormView
-from django.views.generic.base import TemplateView
+from django.views.generic.base import TemplateView, RedirectView
 
 from .models import ShortenedUrl
 from .forms import ShortenUrlForm
@@ -26,3 +26,10 @@ class ShowShortUrlView(TemplateView):
         shortened_url = get_object_or_404(ShortenedUrl, shortcode=shortcode)
         context['shortened_url'] = shortened_url
         return context
+
+
+class RedirectUrlView(RedirectView):
+    
+    def get_redirect_url(self, *args, **kwargs):
+        shortcode = kwargs['shortcode']
+        return get_object_or_404(ShortenedUrl, shortcode=shortcode).url
