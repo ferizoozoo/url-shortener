@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Welcome to the URL shortener service!
+{% endblock title %}
+
+{% block content %}
+    <div>
+        <h2>URL Shortener</h2>
+        <form action="/">
+            {{ form }}
+        </form>
+    </div>
+{% endblock content %}
