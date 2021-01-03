@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+HOST_NAME = 'localhost:8000'
 
 # Application definition
 

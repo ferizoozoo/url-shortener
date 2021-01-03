@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 from .utils import code_generator
 from .validators import validate_url
@@ -15,4 +16,7 @@ class ShortenedUrl(models.Model):
     def save(self, *args, **kwargs):
         if self.shortcode is None or self.shortcode == '':
             self.shortcode = code_generator(SHORTCODE_SIZE)
-        super().save(*args, **kwargs)    
+        super().save(*args, **kwargs)  
+
+    def get_shortened_url(self):
+        return 'http://' + settings.HOST_NAME + '/' + self.shortcode         
